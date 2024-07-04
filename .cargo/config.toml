@@ -1,0 +1,36 @@
+[build]
+target = "avr-atmega328p.json"
+
+[target.'cfg(target_arch = "avr")']
+runner = "ravedude -cb 115200 uno"
+
+[unstable]
+build-std = ["core"]
+
+# [profile.dev]
+# codegen-units = 1 # must have
+# debug = true
+# lto = true
+# opt-level = "s"
+# panic = "abort"
+
+[profile.dev]
+codegen-units = 1
+panic = "abort"
+lto = false
+opt-level = 0
+overflow-checks = true
+incremental = true
+debug = 2
+debug-assertions = true
+
+[profile.release]
+codegen-units = 1
+panic = "abort"
+lto = true
+opt-level = "z"
+overflow-checks = false
+incremental = false
+debug = false
+debug-assertions = false
+strip = true

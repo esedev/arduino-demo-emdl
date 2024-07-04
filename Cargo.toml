@@ -1,0 +1,35 @@
+[package]
+name = "arduino-demo-emdl"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "led-blink"
+path = "src/led-blink.rs"
+test = false
+bench = false
+
+[[bin]]
+name = "motor-brushed"
+path = "src/motor-brushed.rs"
+test = false
+bench = false
+
+[[bin]]
+name = "ps2gamepad"
+path = "src/ps2gamepad.rs"
+test = false
+bench = false
+
+[dependencies]
+emdl-ps2device = { path = "../../crates/emdl-ps2device" }
+panic-halt = "0.2.0"
+ufmt = "0.2.0"
+
+[dependencies.arduino-hal]
+features = ["arduino-uno"]
+git = "https://github.com/rahix/avr-hal"
+rev = "afdadeb" # 2024-06-19
+
+[build-dependencies.proc-macro2]
+version = "=1.0.79"
