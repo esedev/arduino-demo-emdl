@@ -23,6 +23,7 @@ bench = false
 
 [dependencies]
 emdl-ps2device = { path = "../../crates/emdl-ps2device" }
+emdl-motors = { path = "../../crates/emdl-motors" }
 panic-halt = "0.2.0"
 ufmt = "0.2.0"
 
