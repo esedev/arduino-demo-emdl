@@ -4,7 +4,7 @@ use emdl_ps2device as ps2device;
 
 use arduino_hal::prelude::*;
 use panic_halt as _;
-use ps2device ::prelude::*;
+use ps2device::prelude::*;
 
 const UART_BRATE: u32 = 115200; // [115200, 57600]
 
@@ -23,10 +23,8 @@ fn main() -> ! {
     ).unwrap();
 
     arduino_hal::delay_ms(200);
-
     // gamepad
-    let mut gamepad = Ps2Device::new(
-        pins.d7.into_pull_up_input(),
+    let mut gamepad = create_psx_controller(pins.d7.into_pull_up_input(),
         pins.d6.into_output(),
         pins.d5.into_output(),
         pins.d4.into_output(),
@@ -34,7 +32,6 @@ fn main() -> ! {
     );
 
     gamepad.connect();
-    //gamepad.read_device_info();
     {
         let str_gp_type: &str = match gamepad.ctype {
             Ps2DeviceType::Unknown => "Unknown",
@@ -72,7 +69,11 @@ fn main() -> ! {
 
     loop {
         arduino_hal::delay_ms(10);
+        let state = gamepad.state;
         gamepad.poll();
+        if state != gamepad.state {
+            ufmt::uwriteln!(&mut serial, "Connection: {}", gamepad.state == Ps2DeviceState::Connected);
+        }
 
         if gamepad.is_down(Ps2Button::Select) {
             ufmt::uwriteln!(&mut serial, "Select down");
