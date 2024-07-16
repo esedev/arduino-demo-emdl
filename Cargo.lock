@@ -7,7 +7,7 @@ name = "arduino-demo-emdl"
 version = "0.1.0"
 dependencies = [
  "arduino-hal",
- "emdl-ps2device-rs",
+ "emdl-ps2device",
  "panic-halt",
  "proc-macro2",
  "ufmt",
@@ -134,7 +134,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "723dce4e9f25b6e6c5f35628e144794e5b459216ed7da97b7c4b66cdb3fa82ca"
 
 [[package]]
-name = "emdl-ps2device-rs"
+name = "emdl-ps2device"
 version = "0.1.0"
 dependencies = [
  "embedded-hal 1.0.0",

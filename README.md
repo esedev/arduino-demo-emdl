@@ -2,7 +2,10 @@
 **This project has only been tested on an Arduino Nano (atmega328p) and an Arduino Uno (atmega328p).**
 - [PS controller DualShock2](https://en.wikipedia.org/wiki/DualShock)
 
-## PS2 Dualshock Gamepad
+## Demo for library
+- [emdl-ps2device](todo)
+
+## PS2 Dualshock Wireless Gamepad
 ![PS2 gamepad connection to Uno](arduino-uno-ps2gp.svg "Device connection")
 
 #### Known Issues
